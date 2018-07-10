@@ -5,8 +5,8 @@ rabbitmq:
   host: 211.49.172.81:5671,211.49.172.81:5672,211.49.172.81:5673
   user: guest
   password: "guest"
+  routingkey: test
   order:
-    routingkey: order
     queue:
       buy: order.buy
       sell: order.sell
@@ -14,7 +14,6 @@ rabbitmq:
       buy: order.buy-exchange
       sell: order.sell-exchange
   wallet:
-    routingkey: wallet
     queue:
       deposit: wallet.deposit
       withdraw: wallet.withdraw

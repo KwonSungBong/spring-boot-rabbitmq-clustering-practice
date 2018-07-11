@@ -91,4 +91,31 @@ rabbitmqctl status
 
 
 
+#####################################################################
+
+
+master,slave,slave
+
+ssh ksb@192.168.35.175
+
+ssh ksb@192.168.35.171
+
+ssh ksb@192.168.35.106
+
+
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install -y erlang
+sudo apt-get install rabbitmq-server
+sudo systemctl enable rabbitmq-server
+
+
+
+
+
+
+
+
+
 

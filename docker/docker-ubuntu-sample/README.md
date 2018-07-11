@@ -9,8 +9,6 @@ slave : testubuntu2, testubuntu3
 
 ssh : root/root
 
-adduser ksb
-password
 
 ##########################################################################################
 
@@ -22,6 +20,13 @@ apt-get update -y
 apt-get upgrade -y
 
 apt-get install vim -y
+e
+apt-get update && apt-get install -y sudo
+
+adduser ksb
+password
+
+usermod -aG sudo ksb
 
 
 2. [master, slave] install rabbitmq 
@@ -119,6 +124,10 @@ sudo rabbitmqctl stop_app
 sudo rabbitmqctl join_cluster --ram rabbit@testubuntu1
 
 sudo rabbitmqctl cluster_status
+
+sudo rabbitmqctl start_app
+
+
 
 [master]
 sudo rabbitmqctl cluster_status

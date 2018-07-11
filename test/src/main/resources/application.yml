@@ -1,12 +1,14 @@
 server:
   port: 9000
 
-#spring:
-#  rabbitmq:
-#    host: 192.168.35.175,192.168.35.3,192.168.35.65
-#    username: test
+spring:
+  rabbitmq:
+    host: 192.168.35.175,192.168.35.3,192.168.35.65
+    username: test
+    password: password
+#    host: 211.49.172.81
+#    username: rabbitmq
 #    password: password
-#    port: 5672
 
 #rabbitmq:
 #  host: 192.168.35.175:5672,192.168.35.3:5672,192.168.35.65:5672

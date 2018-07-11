@@ -144,7 +144,7 @@ netstat -tnlp | grep 5672
 
 sudo rabbitmqctl add_user test password
 sudo rabbitmqctl set_user_tags test administrator
-
+sudo rabbitmqctl set_permissions -p / test ".*" ".*" ".*"
 
 #######################################################
 

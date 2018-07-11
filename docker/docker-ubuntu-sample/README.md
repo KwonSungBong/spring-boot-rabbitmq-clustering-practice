@@ -120,9 +120,9 @@ sudo rabbitmqctl join_cluster --ram rabbit@testubuntu1
 
 sudo rabbitmqctl cluster_status
 
-
 [master]
 sudo rabbitmqctl cluster_status
+
 
 #######################################################
 

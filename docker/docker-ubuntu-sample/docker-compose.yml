@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+  testubuntu1:
+    image: rastasheep/ubuntu-sshd:16.04
+    hostname: testubuntu1
+    ports:
+      - "3331:22"
+      - "5671:5672"
+      - "15671:15672"
+      - "25671:25672"
+  testubuntu2:
+    image: rastasheep/ubuntu-sshd:16.04
+    hostname: testubuntu2
+    ports:
+      - "3332:22"
+      - "5672:5672"
+      - "15672:15672"
+      - "25672:25672"
+  testubuntu3:
+    image: rastasheep/ubuntu-sshd:16.04
+    hostname: testubuntu3
+    ports:
+      - "3333:22"
+      - "5673:5672"
+      - "15673:15672"
+      - "25673:25672"

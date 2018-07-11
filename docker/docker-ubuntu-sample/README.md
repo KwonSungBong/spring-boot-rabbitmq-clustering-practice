@@ -9,6 +9,8 @@ slave : testubuntu2, testubuntu3
 
 ssh : root/root
 
+adduser ksb
+password
 
 ##########################################################################################
 
@@ -32,9 +34,12 @@ systemctl enable rabbitmq-server
 
 ps -ef | grep rabbitmq
 
+
 3. [master, slave] start rabbitmq 
 
 service rabbitmq-server start
+
+ps -ef | grep rabbitmq
 
 
 4. [master] set cookie (모든 클러스터 노드에는 동일한 쿠키가 있어야함)
@@ -45,22 +50,26 @@ scp .erlang.cookie root@testubuntu2:/var/lib/rabbitmq
 
 scp .erlang.cookie root@testubuntu3:/var/lib/rabbitmq
 
-[slave]에 권한이 없는 경우 chmod 777 .erlang.cookie 해서 올리고 다시 chmod 400 .erlang.cookie
+[slave]에 권한이 없는 경우 cd /var/lib/rabbitmq
+chmod 777 .erlang.cookie 해서 올리고 다시 chmod 400 .erlang.cookie 해서 원복
 
 
-5. [slave] set host (반드시 [master]의 hostname을 사용)
+5. [slave] set host (반드시 [master]의 hostname 을 사용)
 
 vi /etc/hosts
 
-172.21.0.*      testubuntu1
+172.21.0.4      testubuntu1
 
-
-6. [master, slave] restart rabbitmq 
+6  [slave]
 
 service rabbitmq-server stop
 
 service rabbitmq-server start
 
+rabbitmqctl cluster_status
+
+
+6. [master, slave] restart rabbitmq 
 
 rabbitmqctl cluster_status
 

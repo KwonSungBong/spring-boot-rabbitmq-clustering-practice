@@ -112,10 +112,75 @@ sudo systemctl enable rabbitmq-server
 
 
 
+#####################################################################
+
+
+master,slave,slave
+
+ssh ksb@192.168.35.175
+
+ssh ksb@192.168.35.65
+
+ssh ksb@192.168.35.3
 
 
 
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install -y erlang
+sudo apt-get install rabbitmq-server
+sudo systemctl enable rabbitmq-server
+
+ps -ef | grep rabbitmq
+
+sudo rabbitmqctl cluster_status
 
 
+cd /var/lib/rabbitmq
+sudo chmod 777 .erlang.cookie
+sudo scp .erlang.cookie ksb@192.168.35.65:/var/lib/rabbitmq
+sudo scp .erlang.cookie ksb@192.168.35.3:/var/lib/rabbitmq
+sudo chmod 400 .erlang.cookie
+
+sudo vi /etc/hosts
+192.168.35.175  testubuntu1
+
+sudo rabbitmqctl cluster_status
+
+sudo service rabbitmq-server stop
+sudo service rabbitmq-server start
+
+sudo rabbitmqctl cluster_status
+
+sudo rabbitmqctl stop_app
+
+sudo rabbitmqctl join_cluster --ram rabbit@testubuntu1
+sudo rabbitmqctl join_cluster --ram rabbit@testubuntu3
+
+sudo rabbitmqctl start_app
+
+
+### reset ###
+
+sudo rabbitmqctl stop_app
+
+sudo rabbitmqctl reset
+
+sudo rabbitmqctl start_app
+
+
+#### crash ####
+
+sudo rabbitmqctl reset
+sudo service rabbitmq-server stop
+sudo service rabbitmq-server start
+sudo rabbitmqctl stop_app
+sudo rabbitmqctl cluster_statuss
+sudo rabbitmqctl join_cluster --ram rabbit@testubuntu1
+
+
+###########################
+
+마스터에 동시에 두개의 슬래이브가 Clustering 되지 않을 때   : 1 ← 2 ← 3 형태의 커넥션으로 Clustering 을 설정한다.
 
 

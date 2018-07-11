@@ -136,5 +136,24 @@ sudo rabbitmqctl cluster_status
 #######################################################
 
 
+sudo service rabbitmq-server start
+sudo service rabbitmq-server stop
+sudo rabbitmq-plugins enable rabbitmq_management
+
+netstat -tnlp | grep 5672
+
+sudo rabbitmqctl add_user test password
+sudo rabbitmqctl set_user_tags test administrator
+
+
+#######################################################
+
+
+https://www.rabbitmq.com/clustering.html
+
+
+
+
+
 
 

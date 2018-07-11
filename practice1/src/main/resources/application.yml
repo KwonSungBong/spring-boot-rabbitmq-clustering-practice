@@ -2,9 +2,9 @@ server:
   port: 9001
 
 rabbitmq:
-  host: 211.49.172.81:5671,211.49.172.81:5672,211.49.172.81:5673
-  user: guest
-  password: "guest"
+  host: 192.168.35.175,192.168.35.3,192.168.35.65
+  user: test
+  password: "password"
   routingkey: test
   order:
     queue:

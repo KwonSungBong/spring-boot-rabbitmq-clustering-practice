@@ -1,6 +1,7 @@
 ubuntu:16.04 설치
 
 참조 : http://thebluecheese.tistory.com/22
+참조 : https://www.rabbitmq.com/clustering.html
 
 
 master : testubuntu1
@@ -29,6 +30,8 @@ adduser ksb
 password
 
 usermod -aG sudo ksb
+
+alias grep='grep --color=auto'
 
 
 2. [master, slave] ksb login 
@@ -207,7 +210,6 @@ sudo rabbitmqctl set_permissions -p / test ".*" ".*" ".*"
 #######################################################
 
 
-https://www.rabbitmq.com/clustering.html
 
 
 
